@@ -26,9 +26,37 @@
 
 #include <stdio.h>
 
-int main() {
+int isArmstrong( int num ) {
+    int i = 0, sum = 0, n = num ;
 
-    //--| YOUR CODE HERE
+    while ( n != 0 ) {
+        n /= 10 ;
+        i++ ;
+    }
+    n = num ;
+    while ( n != 0 ) {
+        int digit = n % 10 ;
+        int powered = 1 ;
+        for ( int j = 0 ; j < i ; j++ ) {
+            powered *= digit ;
+        }
+        sum += powered ;
+        n /= 10 ;
+    }
+    return ( sum == num ) ;
+}
+
+int main() {
+    int num ;
+
+    printf( "Enter a number:\n" ) ;
+    scanf( "%d", &num ) ;
+
+    if ( isArmstrong( num ) ) {
+        printf( "Pass.\n" ) ;
+    } else {
+        printf( "Not Pass.\n" ) ;
+    }
 
     return 0 ;
-}//end main function
+}
